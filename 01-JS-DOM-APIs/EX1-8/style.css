@@ -1,0 +1,13 @@
+section {
+    text-align: center;
+    color: black;
+}
+
+#slideSource {
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+#slideSource.fade {
+    opacity: 1;
+}
