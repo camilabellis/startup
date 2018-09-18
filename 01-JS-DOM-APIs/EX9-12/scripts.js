@@ -1,7 +1,7 @@
-function get(url) {
+function callApi(url, method) {
     return new Promise(function(resolve, reject) {
       let req = new XMLHttpRequest();
-      req.open('GET', url);  
+      req.open(method, url);  
       req.onload = () => {
         if (req.status == 200) {
           console.log("Success!");
@@ -22,13 +22,18 @@ function get(url) {
     });
 }
 
-get("https://api.github.com/search/repositories?q=javascript").then(setup)
+callApi({
+  url: 'https://api.github.com/search/repositories?q=javascript',
+  method: 'GET'
+}).then(setup)
 
-function setup (items) {
-    let list = document.getElementById("list-body");
-    for (let i=0; i < items.length; i++){
-        let repoName = document.createElement('li');
-        repoName.innerHTML = items.full_name;
-        list. appendChild(repoName);
-    }
+function setup (response) {
+  console.log(response);
+  let ul = document.createElement('ul');
+  response.items.forEach(function(item){
+    let li = document.createElement('li');
+    li.textContent = tiem.full_name;
+    console.log()
+  })
+  ul.appendChild()
 }
